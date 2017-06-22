@@ -14,6 +14,9 @@ const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
+//data helpers
+const dataHelpers = require("./util/data_helpers")(knex);
+
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/api_users");
 const participantsRoutes = require("./routes/api_participants");
@@ -43,15 +46,15 @@ app.use(express.static("public"));
 // Mount all resource routes
 
 //TESTER ROUTES
-app.use("/api/users", usersRoutes(knex));
-app.use("/api/participants", participantsRoutes(knex));
-app.use("/api/events", eventsRoutes(knex));
+app.use("/api/users", usersRoutes(dataHelpers));
+app.use("/api/participants", participantsRoutes(dataHelpers));
+app.use("/api/events", eventsRoutes(dataHelpers));
 //////////////////END
 
 //WEBSITE ROUTES
-app.use("/eventshub", eventsHub(knex));
-app.use("/eventshub/event", createEvent(knex));
-app.use("/eventshub/event/", eventURL(knex));
+app.use("/eventshub", eventsHub(dataHelpers));
+app.use("/eventshub/event", createEvent(dataHelpers));
+app.use("/eventshub/event/", eventURL(dataHelpers));
 
 
 // Home page
