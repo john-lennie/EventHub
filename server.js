@@ -20,7 +20,7 @@ const participantsRoutes = require("./routes/participants");
 const eventsRoutes = require("./routes/events");
 const eventsHub = require("./routes/eventshub");
 const createEvent = require("./routes/createEvents");
-const  eventURL = require("./routes/eventURL");
+const eventURL = require("./routes/eventURL");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
