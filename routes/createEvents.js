@@ -6,23 +6,8 @@ const router  = express.Router();
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
-    res.status(200).send("IM IN CREATE EVENTS PAGE");
+    res.render("event");
   });
-
-  // router.get("/:id", (req, res) => {
-  //   res.status(200).send("GOT ID AND STUFF");
-  // });
-
-
-
-
-
-
-
-
-
-
-
 
   return router;
 }
