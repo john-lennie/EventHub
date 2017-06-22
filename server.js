@@ -15,12 +15,12 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
-const participantsRoutes = require("./routes/participants");
-const eventsRoutes = require("./routes/events");
+const usersRoutes = require("./routes/api_users");
+const participantsRoutes = require("./routes/api_participants");
+const eventsRoutes = require("./routes/api_events");
 const eventsHub = require("./routes/eventshub");
-const createEvent = require("./routes/createEvents");
-const eventURL = require("./routes/eventURL");
+const createEvent = require("./routes/create_event");
+const eventURL = require("./routes/event_url");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.

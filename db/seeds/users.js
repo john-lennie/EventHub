@@ -11,8 +11,8 @@ exports.seed = function(knex, Promise) {
     ])
     .then(()=> {
       return Promise.all([
-        knex('events').insert({id: 1, event_name: "Vasily's big Party!", event_date: '2017-07-22', url: 'b2xVn2', admin_id: 1}),
-        knex('events').insert({id: 2, event_name: "Johns's RAVE!!!", event_date: '2017-07-02', url: 'L3xETx', admin_id: 2})
+        knex('events').insert({id: 1, event_name: "Vasily's big Party!", event_date: '2017-07-22', url: 'b2xVn2', admin_id: 1, desc: "SUPER AWESOME PARTY AT VASILIYS"}),
+        knex('events').insert({id: 2, event_name: "Johns's RAVE!!!", event_date: '2017-07-02', url: 'L3xETx', admin_id: 2, desc: "SUPER AWESOME RAVE AT JOHNS HOUSE"})
       ]);
     })
     .then(() => {
