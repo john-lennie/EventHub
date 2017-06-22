@@ -7,7 +7,6 @@ module.exports = (dataHelpers) => {
   router.get("/", (req, res) => {
     dataHelpers.getAllEvents()
       .then((results) => {
-        console.log(results);
         res.json(results);
     });
   });
