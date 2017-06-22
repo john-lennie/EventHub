@@ -13,13 +13,16 @@
   <body>
 
     <h1>Event Page</h1>
-    <form action="/event" method="POST">
-      <input type="text" name="name" placeholder="name"><br />
+
+    <form action="/eventshub/event/" method="POST">
+      <input type="text" name="firstname" placeholder="first name"><br />
+      <input type="text" name="lastname" placeholder="last name"><br />
       <input type="email" name="email" placeholder="email"><br />
-      <input type="text" name="event_name" placeholder="event name"><br />
+      <input type="text" name="eventname" placeholder="event name"><br />
       <input type="text" name="description" placeholder="description"><br />
-      <input type="password" name="password" placeholder="password"><br />
       <input type="submit" value="Create Event">
     </form>
+
   </body>
+
 </html>
