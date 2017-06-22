@@ -1,10 +1,24 @@
-$(() => {
-  $.ajax({
-    method: "GET",
-    url: "/api/users"
-  }).done((users) => {
-    for(user of users) {
-      $("<div>").text(user.first_name).appendTo($("body"));
-    }
-  });
-});
+// // When user clicks on create event button, they fetch create-event form.
+// $(document).ready(() =>{
+//   $('#get_form_btn').on("click", (event) => {
+//     //Set ajax get request on button click
+//     $.ajax({
+//       method: "GET",
+//       url: "/eventshub/event",
+//     })
+//     .done()
+//     .fail(console.error);
+//     })
+// });
+
+// JSON API testing.
+// $(() => {
+//   $.ajax({
+//     method: "GET",
+//     url: "/api/users"
+//   }).done((users) => {
+//     for(user of users) {
+//       $("<div>").text(user.first_name).appendTo($("body"));
+//     }
+//   });
+// });
