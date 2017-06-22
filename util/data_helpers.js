@@ -51,10 +51,8 @@ module.exports = function makeDataHelpers(knex) {
       .returning('id')
       .insert({first_name: firstName, last_name: lastName, email: email})
       .then((user_id) => {
-        console.log(user_id[0]);
-        knex('events')
+        return knex('events')
         .insert({event_name: eventName, event_date: eventDate, url: newUrl, admin_id: user_id[0], desc: description})
-        .then(()=>{})
       })
     },
 
