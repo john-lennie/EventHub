@@ -41,6 +41,21 @@ module.exports = function makeDataHelpers(knex) {
       .where('url', url)
       .join('users', 'events.admin_id', '=', 'users.id')
       .select('events.id','event_name', 'event_date', 'url', 'desc', 'users.first_name')
+    },
+
+    // // need query with eventSummary, event name, event time, host name,
+    // // and description where URL = a parameter thats going to be passed by me
+
+    createAdminAndEvent: function(firstName, lastName, email, eventName, eventDate, description, newUrl) {
+      return knex('users')
+      .returning('id')
+      .insert({first_name: firstName, last_name: lastName, email: email})
+      .then((user_id) => {
+        console.log(user_id[0]);
+        knex('events')
+        .insert({event_name: eventName, event_date: eventDate, url: newUrl, admin_id: user_id[0], desc: description})
+        .then(()=>{})
+      })
     }
   }
 }
