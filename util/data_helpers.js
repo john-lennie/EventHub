@@ -41,6 +41,12 @@ module.exports = function makeDataHelpers(knex) {
       .where('url', url)
       .join('users', 'events.admin_id', '=', 'users.id')
       .select('events.id','event_name', 'event_date', 'url', 'desc', 'users.first_name', 'users.last_name', 'desc')
+    },
+
+    insertUser: function(fname,lname, mail)
+    {
+      return knex('users')
+      .insert({first_name: fname, last_name: lname, email: mail});
     }
   }
 }
