@@ -40,7 +40,7 @@ module.exports = function makeDataHelpers(knex) {
       return knex('events')
       .where('url', url)
       .join('users', 'events.admin_id', '=', 'users.id')
-      .select('events.id','event_name', 'event_date', 'url', 'desc', 'users.first_name')
+      .select('events.id','event_name', 'event_date', 'url', 'desc', 'users.first_name', 'users.last_name', 'desc')
     },
 
     // // need query with eventSummary, event name, event time, host name,
@@ -56,6 +56,11 @@ module.exports = function makeDataHelpers(knex) {
         .insert({event_name: eventName, event_date: eventDate, url: newUrl, admin_id: user_id[0], desc: description})
         .then(()=>{})
       })
+    },
+
+    insertUser: function(fname,lname, mail) {
+      return knex('users')
+      .insert({first_name: fname, last_name: lname, email: mail});
     }
   }
 }
