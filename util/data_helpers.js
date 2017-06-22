@@ -40,7 +40,7 @@ module.exports = function makeDataHelpers(knex) {
       return knex('events')
       .where('url', url)
       .join('users', 'events.admin_id', '=', 'users.id')
-      .select('events.id','event_name', 'event_date', 'url', 'desc', 'users.first_name')
+      .select('events.id','event_name', 'event_date', 'url', 'desc', 'users.first_name', 'users.last_name', 'desc')
     }
   }
 }
