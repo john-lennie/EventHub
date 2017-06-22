@@ -2,13 +2,10 @@
 
 const express = require('express');
 const router  = express.Router();
-
-module.exports = (knex) => {
+module.exports = (dataHelpers) => {
 
   router.get("/", (req, res) => {
-    knex
-      .select("*")
-      .from("events")
+    dataHelpers.getAllEvents()
       .then((results) => {
         res.json(results);
     });

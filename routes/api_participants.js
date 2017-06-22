@@ -3,12 +3,10 @@
 const express = require('express');
 const router  = express.Router();
 
-module.exports = (knex) => {
+module.exports = (dataHelpers) => {
 
   router.get("/", (req, res) => {
-    knex
-      .select("*")
-      .from("participants")
+    dataHelpers.getAllParticipants()
       .then((results) => {
         console.log(results);
         res.json(results);
