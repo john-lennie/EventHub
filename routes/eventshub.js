@@ -6,7 +6,7 @@ const router  = express.Router();
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
-    res.status(200).send("IM IN HOMEPAGE");
+    res.render("index");
   });
   return router;
 }
