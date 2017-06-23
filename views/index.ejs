@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <title>EventsHub</title>
-
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
+
   <body>
-
-      <div class="home-video-wrapper">
-        <video class="home-video" autoplay="" loop="" muted="">
-          <source src="https://d3hjue7omxs01q.cloudfront.net/Video/homepage/background-header-v1.mp4" type="video/mp4">
-          <source src="https://d3hjue7omxs01q.cloudfront.net/Video/homepage/background-header-v1.webm" type="video/webm">
-        </video>
-      </div>
-
+    <div class="home-video-wrapper">
+      <video class="home-video" autoplay="" loop="" muted="">
+        <source src="https://d3hjue7omxs01q.cloudfront.net/Video/homepage/background-header-v1.mp4" type="video/mp4">
+        <source src="https://d3hjue7omxs01q.cloudfront.net/Video/homepage/background-header-v1.webm" type="video/webm">
+      </video>
+    </div>
 
     <section class="home-main">
       <h1>Welcome To Eventshub</h1>
@@ -27,30 +25,21 @@
     </section>
 
     <section class="home-form">
-
       <h1>Event Page</h1>
-
       <form action="/eventshub/event/" method="POST" id="event_create_form">
-
         <label for="firsName">First Name</label>
         <input id="first_name" type="text" name="firstname" placeholder="First Name">
-
         <label for="lastName">Last Name</label>
         <input id="last_name" type="text" name="lastname" placeholder="Last Name">
-
         <label for="Email">Email</label>
         <input id="email" type="email" name="email" placeholder="Email">
-
         <label for="eventName">Event Name</label>
         <input id="event_name" type="text" name="eventname" placeholder="Event Name">
-
         <label for="Description">Description</label>
         <textarea id="description" type="text" name="description" placeholder="Description"></textarea>
-
         <button id="create_event_btn" type="sumbmit">Create Event</button>
-
       </form>
     </section>
-
   </body>
+  
 </html>
