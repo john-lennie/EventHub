@@ -11,8 +11,9 @@ module.exports = function makeDataHelpers(knex) {
       return Math.random().toString(36).substr(2, 16);
     },
 
-    // // getll all users from db
+    // DB Gets
 
+    // getll all users from db
     getAllUsers: function() {
       return knex
       .select("*")
@@ -26,16 +27,14 @@ module.exports = function makeDataHelpers(knex) {
       .from("events")
     },
 
-    // // get all participants from db
+    // get all participants from db
     getAllParticipants: function() {
       return knex
       .select("*")
       .from("participants")
     },
 
-    // // need query with eventSummary, event name, event time, host name,
-    // // and description where URL = a parameter thats going to be passed by me
-
+    // get data for events to display on summaries page
     getSummary: function(url) {
       return knex('events')
       .where('url', url)
@@ -43,9 +42,9 @@ module.exports = function makeDataHelpers(knex) {
       .select('events.id','event_name', 'event_date', 'url', 'desc', 'users.first_name', 'users.last_name', 'desc')
     },
 
-    // // need query with eventSummary, event name, event time, host name,
-    // // and description where URL = a parameter thats going to be passed by me
+    //DB Inserts
 
+    // Insert new user in users table then assign that user as admin a new event in events table
     createAdminAndEvent: function(firstName, lastName, email, eventName, eventDate, description, newUrl) {
       return knex('users')
       .returning('id')
@@ -56,6 +55,7 @@ module.exports = function makeDataHelpers(knex) {
       })
     },
 
+    // Insert one new user into users table
     insertUser: function(fname,lname, mail) {
       return knex('users')
       .insert({first_name: fname, last_name: lname, email: mail});
