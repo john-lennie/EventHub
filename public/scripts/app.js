@@ -1,45 +1,22 @@
-// // When user clicks on create event button, they fetch create-event form.
-// $(document).ready(() =>{
-//   $('#get_form_btn').on("click", (event) => {
-//     //Set ajax get request on button click
-//     $.ajax({
-//       method: "GET",
-//       url: "/eventshub/event",
-//     })
-//     .done()
-//     .fail(console.error);
-//     })
-// });
-
-// JSON API testing.
-// $(() => {
-//   $.ajax({
-//     method: "GET",
-//     url: "/api/users"
-//   }).done((users) => {
-//     for(user of users) {
-//       $("<div>").text(user.first_name).appendTo($("body"));
-//     }
-//   });
-// });
 $(document).ready(() => {
 
-
-/////////////////////CREATE EVENT DYNAMICALLY/////////////////////////////////
+// When user clicks on create event button, they fetch create-event form.
   $("#get-form-btn").on("click", function() {
     $(".home-main").hide();
     $(".home-form").show();
   });
 
-
-  $("#create_event_btn").on("click", function() {
+// When user clicks on create event button, ajax POST request is sent to the server.
+  let form = $("#event_create_form");
+  form.on("submit",( (event) => {
+    event.preventDefault();
       $.ajax({
-        type: 'POST',
-        url: 'http://localhost:8080/eventshub/event/',
-        success: function (res) {
-          console.log(res);
-          console.log("IM SENDING IT");
+        data: form.serialize(),
+        url: form.attr('action'),
+        type: form.attr('method'),
+        success: (res) => {
+          window.location = res;
         }
-    });
-  });
+      })
+    }));
 });

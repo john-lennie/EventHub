@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/create_event.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -24,31 +23,31 @@
     <section class="home-main">
       <h1>Welcome To Eventshub</h1>
       <h2>Plan your event like a professional!</h2>
-      <a id ="get-form-btn">Create Event</a>
+      <a id="get-form-btn">Create Event</a>
     </section>
 
     <section class="home-form">
 
       <h1>Event Page</h1>
 
-      <form action="/eventshub/event/" method="POST" id="create_id">
+      <form action="/eventshub/event/" method="POST" id="event_create_form">
 
-        <label for="first_name">First Name</label>
+        <label for="firsName">First Name</label>
         <input id="first_name" type="text" name="firstname" placeholder="First Name">
 
-        <label for="last_name">Last Name</label>
+        <label for="lastName">Last Name</label>
         <input id="last_name" type="text" name="lastname" placeholder="Last Name">
 
-        <label for="email">Email</label>
+        <label for="Email">Email</label>
         <input id="email" type="email" name="email" placeholder="Email">
 
-        <label for="event_name">Event Name</label>
+        <label for="eventName">Event Name</label>
         <input id="event_name" type="text" name="eventname" placeholder="Event Name">
 
-        <label for="description">Description</label>
+        <label for="Description">Description</label>
         <textarea id="description" type="text" name="description" placeholder="Description"></textarea>
 
-        <button id="create_event_btn" type="button">Create Event</button>
+        <button id="create_event_btn" type="sumbmit">Create Event</button>
 
       </form>
     </section>
