@@ -1,9 +1,22 @@
 $(document).ready(() => {
 
+  $(".event-navigation .attending").on("click", function() {
+    $(".event-info").hide();
+    $(".event-participants").show();
+    $(".event-navigation .attending").addClass("active");
+    $(".event-navigation .info").removeClass("active");
+  });
 
-$("#getInfo").on("click", function() {
-  console.log(window.location.pathname);
-  $.ajax({
+  $(".event-navigation .info").on("click", function() {
+    $(".event-participants").hide();
+    $(".event-info").show();
+    $(".event-navigation .info").addClass("active");
+    $(".event-navigation .attending").removeClass("active");
+  });
+
+  $("#getInfo").on("click", function() {
+    console.log(window.location.pathname);
+    $.ajax({
       type: 'POST',
       url: window.location.pathname,
       success: function(res) {

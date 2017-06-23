@@ -37,9 +37,12 @@ body {
     font-weight: 400;
     margin: 0;
     font-size: 2.5vw;
-    color: #fff;
   }
 
+}
+
+button:focus {
+  outline: none;
 }
 
 .button {
@@ -91,6 +94,10 @@ body {
   transform: translate(0, -50%);
   width: 100vw;
   text-align: center;
+
+  h2 {
+    color: #fff;
+  }
 
   a {
     @extend .button;
@@ -156,4 +163,37 @@ body {
     border: none;
   }
 
+}
+
+.event-navigation {
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+
+  button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 5vw;
+    margin: 50px 25px;
+  }
+
+}
+
+.active {
+  border-bottom: 3px solid #000 !important;
+}
+
+.event-info  {
+  max-width: 600px;
+  margin: 128px auto 0;
+}
+
+.event-participants  {
+  display: none;
+  max-width: 600px;
+  margin: 128px auto 0;
 }

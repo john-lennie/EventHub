@@ -1,12 +1,12 @@
 $(document).ready(() => {
 
-// When user clicks on create event button, they fetch create-event form.
+  // When user clicks on create event button, they fetch create-event form.
   $("#get-form-btn").on("click", function() {
     $(".home-main").hide();
     $(".home-form").show();
   });
 
-// When user clicks on create event button, ajax POST request is sent to the server.
+  // When user clicks on create event button, ajax POST request is sent to the server.
   let form = $("#event_create_form");
   form.on("submit",( (event) => {
     event.preventDefault();
@@ -19,4 +19,5 @@ $(document).ready(() => {
         }
       })
     }));
+
 });
