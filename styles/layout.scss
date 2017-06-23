@@ -1,4 +1,16 @@
+$highlight-colour: #ff5e00;
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+// UNIVERSAL STYLES
+
 body {
+
   background-color: #EEE;
   color: #fff;
 
@@ -16,6 +28,36 @@ body {
 
 }
 
+// SPECIFIC STYLES
+
+.home-video-wrapper {
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  overflow: hidden;
+  background-size: cover;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-image: none;
+}
+
+.home-video {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: visible;
+  opacity: 1;
+  margin: auto;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
 .home-main {
   position: absolute;
   z-index: -1;
@@ -24,17 +66,38 @@ body {
   transform: translate(0, -50%);
   width: 100vw;
   text-align: center;
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 1.75vw 2.25vw;
+    background-color: $highlight-colour;
+    color: #fff;
+    margin: 50px 0 0;
+    font-size: 1.5vw;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    @include border-radius(5px);
+  }
+
 }
 
-.home-main a {
-  display: inline-block;
-  text-decoration: none;
-  padding: 1.75vw 2.25vw;
-  background-color: #ff5e00;
-  color: #fff;
-  margin: 50px 0 0;
-  font-size: 1.5vw;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border-radius: 5px;
+.home-form {
+
+  display: none;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+
+  label, input, textarea, button {
+    display: block;
+    margin: 10px 0;
+  }
+  input, textarea, button {
+    width: 100%;
+  }
+
 }

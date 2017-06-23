@@ -26,9 +26,9 @@ $(document).ready(() => {
 
 
 /////////////////////CREATE EVENT DYNAMICALLY/////////////////////////////////
-  $("#get_form_btn").on("click", function() {
-    $(".tittle_page").hide();
-    $(".reg_event").show();
+  $("#get-form-btn").on("click", function() {
+    $(".home-main").hide();
+    $(".home-form").show();
   });
 
 
