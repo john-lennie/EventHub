@@ -11,6 +11,7 @@ module.exports = (dataHelpers) => {
 
   router.post("/", (req, res) => {
     let newURL = dataHelpers.generateURL();
+    console.log("I GOT IT");
     dataHelpers.createAdminAndEvent(req.body.firstname,req.body.lastname,req.body.email, req.body.eventname, req.body.date, req.body.description, newURL);
     res.redirect("/eventshub");
   });
