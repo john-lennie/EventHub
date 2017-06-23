@@ -11,15 +11,26 @@
   </head>
 
   <body>
-    <section id ="summary">
-      <h3>Event Summary</h3>
-      <h2 id="title"> Event Name: <%= data.event_name %></h2>
-      <h2 id="h_name">Full Name: <%= data.first_name %> <%= data.last_name %></h2>
-      <h2 id="desc">Description: <%=data.desc %></h2>
-      <h2 id="url1">Share URL: <%=data.url%></h2>
-      <h2 id="url2">Admin URL: <%=data.admin_url%></h2>
-      <p></p>
-    </section>
+
+    <div class="event-navigation">
+      <button class="info active">Info</button>
+      <button class="attending">Attending</button>
+    </div>
+
+    <div class="event-info">
+      <section id ="summary">
+        <h3>Event Summary</h3>
+        <h2 id="title"> Event Name: <%= data.event_name %></h2>
+        <h2 id="h_name">Full Name: <%= data.first_name %> <%= data.last_name %></h2>
+        <h2 id="desc">Description: <%=data.desc %></h2>
+        <h2 id="url1">Share URL: <%=data.url%></h2>
+        <h2 id="url2">Admin URL: <%=data.admin_url%></h2>
+        <p></p>
+      </section>
+    </div>
+    <div class="event-participants">
+      <h2>Attendees</h2>
+    </div>
   </body>
 
 </html>
