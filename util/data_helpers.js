@@ -37,9 +37,9 @@ module.exports = function makeDataHelpers(knex) {
     // get data for events to display on summaries page
     getSummary: function(url) {
       return knex('events')
-      .where('url', url)
+      .where('admin_url', url)
       .join('users', 'events.admin_id', '=', 'users.id')
-      .select('events.id','event_name', 'event_date', 'url', 'desc', 'users.first_name', 'users.last_name', 'desc')
+      .select('events.id','event_name', 'event_date', 'url', 'desc', 'users.first_name', 'users.last_name', 'desc', 'admin_url')
     },
 
     //DB Inserts
