@@ -11,10 +11,18 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
   <body>
-    <h1>Welcome To Eventshub</h1>
-    <h2>Plan your event like a professional!</h2>
-    <a href="/eventshub/event">
-    <button id ="get_form_btn" class ="home_btn" type=button>Create Event</button>
-    </a>
+
+      <div style="position: absolute; z-index: -1; top: 0px; left: 0px; bottom: 0px; right: 0px; overflow: hidden; background-size: cover; background-color: transparent; background-repeat: no-repeat; background-position: 50% 50%; background-image: none;">
+        <video autoplay="" loop="" muted="" style="margin: auto; position: absolute; z-index: -1; top: 50%; left: 50%; transform: translate(-50%, -50%); visibility: visible; opacity: 1; min-width: 100vw; min-height: 100vh;">
+          <source src="https://d3hjue7omxs01q.cloudfront.net/Video/homepage/background-header-v1.mp4" type="video/mp4">
+          <source src="https://d3hjue7omxs01q.cloudfront.net/Video/homepage/background-header-v1.webm" type="video/webm">
+        </video>
+      </div>
+
+    <section class="home-main">
+      <h1>Welcome To Eventshub</h1>
+      <h2>Plan your event like a professional!</h2>
+      <a id ="get_form_btn" class ="home_btn" href="/eventshub/event">Create Event</a>
+    </section>
   </body>
 </html>
