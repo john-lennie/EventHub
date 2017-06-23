@@ -42,6 +42,14 @@ module.exports = function makeDataHelpers(knex) {
       .select('events.id','event_name', 'event_date', 'url', 'desc', 'users.first_name', 'users.last_name', 'desc', 'admin_url')
     },
 
+    //get data for the public URL only
+    publicGetSummary: function(url) {
+      return knex('events')
+      .where('url', url)
+      .join('users', 'events.admin_id', '=', 'users.id')
+      .select('events.id','event_name', 'event_date', 'url', 'desc', 'users.first_name', 'users.last_name', 'desc', 'admin_url')
+    },
+
     //DB Inserts
 
     // Insert new user in users table then assign that user as admin a new event in events table

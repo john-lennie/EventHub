@@ -11,8 +11,6 @@ module.exports = (dataHelpers) => {
     dataHelpers.getSummary(selected_id).then(function (query_response) {
       console.log(query_response[0]);
 
-          dataHelpers.getSummary(selected_id).then(function (query_response) {
-      console.log(query_response[0]);
 
       let data = query_response[0];
       res.render("summary", {data});
@@ -22,9 +20,14 @@ module.exports = (dataHelpers) => {
   });
 
   router.get("/:id/user", (req,res) => {
-    res.send(200);
-    });
+    console.log("HELLO WORLD");
+    console.log("==>" + req.params.id);
+    dataHelpers.publicGetSummary(req.params.id).then(function (query_response) {
+      console.log(query_response);
+      res.render("test_user_page", query_response[0]);
 
+
+    });
   });
 
 
