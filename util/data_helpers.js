@@ -45,13 +45,13 @@ module.exports = function makeDataHelpers(knex) {
     //DB Inserts
 
     // Insert new user in users table then assign that user as admin a new event in events table
-    createAdminAndEvent: function(firstName, lastName, email, eventName, eventDate, description, newUrl) {
+    createAdminAndEvent: function(firstName, lastName, email, eventName, eventDate, description, newUrl, adminURL) {
       return knex('users')
       .returning('id')
       .insert({first_name: firstName, last_name: lastName, email: email})
       .then((user_id) => {
         return knex('events')
-        .insert({event_name: eventName, event_date: eventDate, url: newUrl, admin_id: user_id[0], desc: description})
+        .insert({event_name: eventName, event_date: eventDate, url: newUrl, admin_id: user_id[0], admin_url: adminURL, desc: description})
       })
     },
 
