@@ -2,9 +2,17 @@ $highlight-colour: #ff5e00;
 
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
 }
 
 // UNIVERSAL STYLES
@@ -13,9 +21,10 @@ body {
 
   background-color: #EEE;
   color: #fff;
+  font-size: 16px;
 
   h1 {
-    font-size: 7vw;
+    font-size: 5vw;
     color: #fff;
     margin: 0 0 40px;
   }
@@ -23,9 +32,20 @@ body {
   h2 {
     font-weight: 400;
     margin: 0;
-    font-size: 3.5vw;
+    font-size: 2.5vw;
   }
 
+}
+
+.button {
+  @include border-radius(5px);
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px 17px;
+  background-color: $highlight-colour;
+  color: #fff;
+  margin: 50px 0 0;
+  cursor: pointer;
 }
 
 // SPECIFIC STYLES
@@ -68,16 +88,8 @@ body {
   text-align: center;
 
   a {
-    display: inline-block;
-    text-decoration: none;
-    padding: 1.75vw 2.25vw;
-    background-color: $highlight-colour;
-    color: #fff;
+    @extend .button;
     margin: 50px 0 0;
-    font-size: 1.5vw;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    @include border-radius(5px);
   }
 
 }
@@ -87,6 +99,8 @@ body {
   display: none;
   position: absolute;
   z-index: -1;
+  width: 90%;
+  max-width: 600px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -95,9 +109,30 @@ body {
   label, input, textarea, button {
     display: block;
     margin: 10px 0;
+    @include transition(all 0.3s ease);
   }
-  input, textarea, button {
+  input, textarea {
     width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    color: #fff;
+    padding: 5px 7px;
+    border: 2px solid #fff;
+    border-radius: 3px;
+  }
+
+  input:focus, textarea:focus {
+    background-color: rgba(0, 0, 0, 0.25);
+    outline: none;
+  }
+
+  textarea {
+    height: 150px;
+  }
+
+  button {
+    @extend .button;
+    margin: 0;
+    border: none;
   }
 
 }
