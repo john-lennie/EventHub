@@ -3,26 +3,31 @@
 
   <head>
     <title>Event Page</title>
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css"/>
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css"/>
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
+    <link rel="stylesheet" href="/styles/create_event.css" type="text/css"/>
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
   <body>
 
-    <h1>Event Page</h1>
-
-    <form action="/eventshub/event/" method="POST">
-      <input type="text" name="firstname" placeholder="first name"><br />
-      <input type="text" name="lastname" placeholder="last name"><br />
-      <input type="email" name="email" placeholder="email"><br />
-      <input type="text" name="eventname" placeholder="event name"><br />
-      <input type="text" name="description" placeholder="description"><br />
-      <input type="submit" value="Create Event">
-    </form>
-
+    <section class="reg_event">
+      <h1>Event Page</h1>
+      <form action="/eventshub/event/" method="POST" id="create_id">
+        <h5 class="title_desc">First Name</h5>
+        <input type="text" name="firstname"><br/>
+        <h5 class="title_desc">Last Name</h5>
+        <input type="text" name="lastname"><br/>
+        <h5 class="title_desc">Email</h5>
+        <input type="email" name="email" placeholder="email"><br/>
+        <h5 class="title_desc">Event Name</h5>
+        <input type="text" name="eventname" placeholder="event name"><br/>
+        <h5 class="title_desc">Description</h5>
+        <input type="text" name="description" placeholder="description"><br/>
+        <h5 class="title_desc"></h5><input type="submit" value="Create Event">
+      </form>
+    </section>
   </body>
-
 </html>

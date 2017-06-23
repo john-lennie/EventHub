@@ -22,3 +22,24 @@
 //     }
 //   });
 // });
+$(document).ready(() => {
+
+
+/////////////////////CREATE EVENT DYNAMICALLY/////////////////////////////////
+  $("#get_form_btn").on("click", function() {
+    $(".tittle_page").hide();
+    $(".reg_event").show();
+  });
+
+
+  $("#create_event_btn").on("click", function() {
+      $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8080/eventshub/event/',
+        success: function (res) {
+          console.log(res);
+          console.log("IM SENDING IT");
+        }
+    });
+  });
+});
