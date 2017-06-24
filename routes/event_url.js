@@ -5,24 +5,16 @@ const router  = express.Router();
 
 module.exports = (dataHelpers) => {
   router.get("/:id", (req,res) => {
-
-    console.log("summary");
     let data;
     let event_id;
     let selected_id = req.url.substring(1, req.url.length);
     dataHelpers.getSummary(selected_id).then(function (query_response) {
-      console.log(query_response[0]);
       data = query_response[0];
       event_id = query_response[0].id;
-      let fake_try = "YESSSSSSS";
       dataHelpers.getEventParticipants(event_id).then(function(participants) {
-        console.log("MY PARTICIPANTS START HERE  " + participants);
-        for (let i in participants)
-          console.log(participants[i]);
         res.render("test_summary", {data, participants});
       });
     });
-
   });
 
   router.get("/:id/user", (req,res) => {
