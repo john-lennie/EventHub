@@ -4,14 +4,12 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (dataHelpers) => {
+
   router.get("/:id", (req,res) => {
-    let data;
-    let event_id;
-    let selected_id = req.url.substring(1, req.url.length);
-    dataHelpers.getSummary(selected_id).then(function (query_response) {
-      data = query_response[0];
-      event_id = query_response[0].id;
-      dataHelpers.getEventParticipants(event_id).then(function(participants) {
+    let adminURL = req.url.substring(1, req.url.length);
+    dataHelpers.getSummary( adminURL ).then(function (eventInfo) {
+      let data = eventInfo[0];
+      dataHelpers.getEventParticipants(eventInfo[0].id).then(function(participants) {
         res.render("test_summary", {data, participants});
       });
     });
