@@ -6,29 +6,40 @@ const router  = express.Router();
 module.exports = (dataHelpers) => {
 
   router.get("/:id", (req,res) => {
+<<<<<<< HEAD
     let adminURL = req.url.substring(1, req.url.length);
     dataHelpers.getSummary( adminURL ).then(function (eventInfo) {
       let data = eventInfo[0];
       dataHelpers.getEventParticipants(eventInfo[0].id).then(function(participants) {
         res.render("test_summary", {data, participants});
+=======
+    let data;
+    let event_id;
+    let selected_id = req.url.substring(1, req.url.length);
+    dataHelpers.getSummary(selected_id).then(function (query_response) {
+      data = query_response[0];
+      event_id = query_response[0].id;
+      dataHelpers.getEventParticipants(event_id).then(function(participants) {
+        res.render("admin_summary", {data, participants});
+>>>>>>> 58ac0853e801f40d319dde916c6b2a1b2899a21b
       });
     });
   });
 
-  router.get("/:id/user", (req,res) => {
+  router.get("/:id/participant", (req,res) => {
     console.log("HELLO WORLD");
     console.log("==>" + req.params.id);
     dataHelpers.publicGetSummary(req.params.id).then(function (query_response) {
       console.log(query_response);
       let data = query_response[0];
-      res.render("test_user_page", {data});
+      res.render("participant_summary", {data});
 
 
     });
   });
 
 //STATIC PARTICIPANT POST
-  router.post("/:id/user", (req,res) => {
+  router.post("/:id/participant", (req,res) => {
     console.log("HELLO WORLD");
     console.log("==>" + req.params.id);
     dataHelpers.publicGetSummary(req.params.id).then(function (query_response) {
