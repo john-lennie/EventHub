@@ -11,21 +11,52 @@
   </head>
 
   <body>
-    <section id ="summary">
-      <h3>You Are Invited to:</h3>
-      <form method="POST">
-        <h2 id="title"> Event Name: <%= data.event_name %></h2>
-        <h2 id="h_name">Full Name: <%= data.first_name %> <%= data.last_name %></h2>
-        <h2 id="desc">Description: <%=data.desc %></h2>
-        <h2 id="url1">Share URL: <%=data.url%></h2>
-        <h2 id="url2">Admin URL: <%=data.admin_url%></h2>
+    <section id ="participant_status">
 
+      <h2>Choose Your Status:</h2>
+      <button>Regiser</button>
+      <button>Edit Status</button>
+
+      <form id="regiser_status_btn" style = "display:none;" method="POST">
+        <input type="text" name="f_name">
+        <input type="text" name="l_name">
+        <input type="email" name="email">
+        <input type="submit" value="Im going">
+      </form>
+
+      <form id="edit_status_btn" style = "display:none;" method="POST">
         <input type="text" name="f_name">
         <input type="text" name="l_name">
         <input type="email" name="email">
         <input type="submit" value="Im going">
       </form>
     </section>
-  </body>
 
+    <div class="event-navigation">
+      <button class="info active">Info</button>
+      <button class="attending">Attending</button>
+    </div>
+
+    <div class="event-info">
+      <section id ="summary">
+        <h3>Event Summary</h3>
+        <h2 id="title"> Event Name: <%= data.event_name %></h2>
+        <h2 id="h_name">Full Name: <%= data.first_name %> <%= data.last_name %></h2>
+        <h2 id="desc">Description: <%=data.desc %></h2>
+        <h2 id="url1">Share URL: <%=data.url%></h2>
+        <h2 id="url2">Admin URL: <%=data.admin_url%></h2>
+        <p></p>
+      </section>
+    </div>
+    <div class="event-participants">
+      <h2>Attendees</h2>
+      <% for (let i in participants) { %>
+      <table>
+        <tr><%=participants[i].first_name%> </tr>
+        <tr><%=participants[i].last_name%> </tr>
+        <tr><%=participants[i].event_confirmation%> </tr>
+      </table>
+      <% }; %>
+    </div>
+  </body>
 </html>

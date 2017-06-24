@@ -6,35 +6,30 @@ const router  = express.Router();
 module.exports = (dataHelpers) => {
 
   router.get("/:id", (req,res) => {
-<<<<<<< HEAD
-    let adminURL = req.url.substring(1, req.url.length);
-    dataHelpers.getSummary( adminURL ).then(function (eventInfo) {
-      let data = eventInfo[0];
-      dataHelpers.getEventParticipants(eventInfo[0].id).then(function(participants) {
-        res.render("test_summary", {data, participants});
-=======
+
     let data;
     let event_id;
     let selected_id = req.url.substring(1, req.url.length);
-    dataHelpers.getSummary(selected_id).then(function (query_response) {
+    dataHelpers.getSummary(selected_id)
+      .then(function (query_response) {
       data = query_response[0];
       event_id = query_response[0].id;
-      dataHelpers.getEventParticipants(event_id).then(function(participants) {
+      dataHelpers.getEventParticipants(event_id)
+      .then(function(participants) {
         res.render("admin_summary", {data, participants});
->>>>>>> 58ac0853e801f40d319dde916c6b2a1b2899a21b
       });
     });
   });
 
   router.get("/:id/participant", (req,res) => {
-    console.log("HELLO WORLD");
-    console.log("==>" + req.params.id);
-    dataHelpers.publicGetSummary(req.params.id).then(function (query_response) {
-      console.log(query_response);
-      let data = query_response[0];
-      res.render("participant_summary", {data});
-
-
+    let URL = req.params.id;
+    dataHelpers.publicGetSummary(URL)
+      .then(function (eventInfo){
+        let data = eventInfo[0];
+        dataHelpers.getEventParticipants(eventInfo[0].id)
+        .then( (participants) => {
+        res.render("participant_summary", {data, participants});
+        });
     });
   });
 
