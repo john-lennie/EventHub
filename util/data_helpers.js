@@ -38,7 +38,7 @@ module.exports = function makeDataHelpers(knex) {
     // SELECT first_name, last_name FROM users JOIN participants ON participants.user_id = users.id WHERE participants.event_id = 1;
     getEventParticipants: function(eventID) {
       return knex('users')
-      .select('users.first_name', 'users.last_name')
+      .select('users.first_name', 'users.last_name', 'participants.event_confirmation')
       .join('participants', "users.id", "=", "participants.user_id")
       .where('participants.event_id', eventID)
     },
