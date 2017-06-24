@@ -30,6 +30,13 @@
     </div>
     <div class="event-participants">
       <h2>Attendees</h2>
+      <% for (let i in participants) { %>
+      <table>
+        <tr><%=participants[i].first_name%> </tr>
+        <tr><%=participants[i].last_name%> </tr>
+        <tr><%=participants[i].event_confirmation%> </tr>
+      </table>
+      <% }; %>
     </div>
   </body>
 

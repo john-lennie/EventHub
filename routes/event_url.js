@@ -12,25 +12,25 @@ module.exports = (dataHelpers) => {
       data = query_response[0];
       event_id = query_response[0].id;
       dataHelpers.getEventParticipants(event_id).then(function(participants) {
-        res.render("test_summary", {data, participants});
+        res.render("admin_summary", {data, participants});
       });
     });
   });
 
-  router.get("/:id/user", (req,res) => {
+  router.get("/:id/participant", (req,res) => {
     console.log("HELLO WORLD");
     console.log("==>" + req.params.id);
     dataHelpers.publicGetSummary(req.params.id).then(function (query_response) {
       console.log(query_response);
       let data = query_response[0];
-      res.render("test_user_page", {data});
+      res.render("participant_summary", {data});
 
 
     });
   });
 
 //STATIC PARTICIPANT POST
-  router.post("/:id/user", (req,res) => {
+  router.post("/:id/participant", (req,res) => {
     console.log("HELLO WORLD");
     console.log("==>" + req.params.id);
     dataHelpers.publicGetSummary(req.params.id).then(function (query_response) {
