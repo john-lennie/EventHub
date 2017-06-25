@@ -8,55 +8,36 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/summary.js"></script>
+    <script type="text/javascript" src="/scripts/participant_summary.js"></script>
   </head>
 
   <body>
     <section id ="participant_status">
-
       <h2>Choose Your Status:</h2>
-      <button>Regiser</button>
-      <button>Edit Status</button>
+      <button id="register_btn" type="button">Register</button>
+      <button id="edit_status_btn" type="button">Edit Status</button> <br>
 
-      <form id="regiser_status_btn" style = "display:none;" method="POST">
-        <input type="text" name="f_name">
-        <input type="text" name="l_name">
+      <form action="/eventshub/event/<%= data.url%>/participant/register" id="register_form" style = "display:none;" method="POST">
+      <label for="firstName">First Name</label>
+        <input type="text" name="first_name">
+        <label for="lastName">Last Name</label>
+        <input type="text" name="last_name">
+        <label for="emailName">Email Name</label>
         <input type="email" name="email">
-        <input type="submit" value="Im going">
+        <input type="submit" value="I'm going">
       </form>
 
-      <form id="edit_status_btn" style = "display:none;" method="POST">
+      <form action="/eventshub/event/<%= data.url%>/participant" id="edit_status_form" style = "display:none;" method="POST">
+      <label for="firstName">First Name</label>
         <input type="text" name="f_name">
+        <label for="LastName">Last Name</label>
         <input type="text" name="l_name">
+        <label for="firsName">Email Name</label>
         <input type="email" name="email">
-        <input type="submit" value="Im going">
+        <input type="submit" value="Update">
       </form>
-    </section>
+    </section> <br>
 
-    <div class="event-navigation">
-      <button class="info active">Info</button>
-      <button class="attending">Attending</button>
-    </div>
 
-    <div class="event-info">
-      <section id ="summary">
-        <h3>Event Summary</h3>
-        <h2 id="title"> Event Name: <%= data.event_name %></h2>
-        <h2 id="h_name">Full Name: <%= data.first_name %> <%= data.last_name %></h2>
-        <h2 id="desc">Description: <%=data.desc %></h2>
-        <h2 id="url1">Share URL: <%=data.url%></h2>
-        <h2 id="url2">Admin URL: <%=data.admin_url%></h2>
-        <p></p>
-      </section>
-    </div>
-    <div class="event-participants">
-      <h2>Attendees</h2>
-      <% for (let i in participants) { %>
-      <table>
-        <tr><%=participants[i].first_name%> </tr>
-        <tr><%=participants[i].last_name%> </tr>
-        <tr><%=participants[i].event_confirmation%> </tr>
-      </table>
-      <% }; %>
-    </div>
   </body>
 </html>

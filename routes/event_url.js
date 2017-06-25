@@ -34,33 +34,61 @@ module.exports = (dataHelpers) => {
   });
 
 //STATIC PARTICIPANT POST
-  router.post("/:id/participant", (req,res) => {
-    console.log("HELLO WORLD");
-    console.log("==>" + req.params.id);
-    dataHelpers.publicGetSummary(req.params.id).then(function (query_response) {
-      console.log(query_response);
-      let first_name = req.body.f_name;
-      let last_name = req.body.l_name;
-      let email = req.body.email;
-      let attending = true;
-      let event_id = query_response[0].id;
-      //console.log(first_name);
-      dataHelpers.insertParticipant(first_name, last_name, email, attending, event_id);
+  router.post("/:id/participant/register", (req,res) => {
+    let URL = req.params.id;
+    console.log("This Other URL", URL);
+    dataHelpers.publicGetSummary(URL)
+      .then((eventInfo) => {
+        let data = eventInfo[0];
+        let attending = true;
+        dataHelpers.insertParticipant(req.body.first_name, req.body.last_name, req.body.email, attending, eventInfo[0].id)
+     })
+      .then(() => {
+        res.status(200).send("/eventshub/event/" + URL + "/participant");
+        });
     });
-    console.log(req.body);
-    res.send(200);
-  });
 
-  router.post("/:id", (req, res) => {
-    let selected_id = req.url.substring(1, req.url.length);
-    console.log("==========>" + selected_id);
-
-    console.log("I GOT THE AJAX CALL NOW " + selected_id);
-    let DUMMY_DATA = dataHelpers.getSummary(selected_id).then(function (query_response) {
-      console.log(query_response);
-      res.json(query_response);
+  router.post("/:id/participant/update", (req,res) => {
+    let URL = req.params.id;
+    dataHelpers.publicGetSummary(URL)
+      .then((eventInfo) => {
+        let data = eventInfo[0];
+        let attending = false;
+        dataHelpers.updateParticipantStatus(req.body.first_name, req.body.last_name, req.body.email, attending, eventInfo[0].id)
+     })
+      .then(() => {
+        res.status(200).send("/eventshub/event/" + URL + "/participant");
+        });
     });
-  });
+
+
+    // console.log("HELLO WORLD");
+    // console.log("==>" + req.params.id);
+    // dataHelpers.publicGetSummary(req.params.id)
+    // .then(function (query_response) {
+    //   console.log(query_response);
+    //   let first_name = req.body.f_name;
+    //   let last_name = req.body.l_name;
+    //   let email = req.body.email;
+    //   let attending = true;
+    //   let event_id = query_response[0].id;
+    //   //console.log(first_name);
+    //   dataHelpers.insertParticipant(req.body.first_name, req.body.last_name, req.body.email, attending, req.body.event_id);
+    // });
+    // console.log(req.body);
+  //   // res.send(200);
+  // });
+
+  // router.post("/:id", (req, res) => {
+  //   let selected_id = req.url.substring(1, req.url.length);
+  //   console.log("==========>" + selected_id);
+
+  //   console.log("I GOT THE AJAX CALL NOW " + selected_id);
+  //   let DUMMY_DATA = dataHelpers.getSummary(selected_id).then(function (query_response) {
+  //     console.log(query_response);
+  //     res.json(query_response);
+  //   });
+  // });
 
 
   return router;
