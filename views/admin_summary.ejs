@@ -18,18 +18,33 @@
     </div>
 
     <div class="event-info">
+
       <section id ="summary">
-        <h3>Event Summary</h3>
-        <h2 id="title"> Event Name: <%= data.event_name %></h2>
-        <h2 id="h_name">Full Name: <%= data.first_name %> <%= data.last_name %></h2>
-        <h2 id="desc">Description: <%=data.desc %></h2>
-        <h2 id="url1">Share URL: <%=data.url%></h2>
-        <h2 id="url2">Admin URL: <%=data.admin_url%></h2>
-        <p></p>
+
+        <h1>Your Event:</h1>
+
+        <h2><%= data.event_name %></h2>
+        <form action="/eventshub/event/<%=data.admin_url%>/edit-event-name" method="POST">
+          <input id="newEventName" type="text" name="newEventName" placeholder="Update event name..." style="width: 200px">
+          <input type="submit" value="Update">
+        </form>
+
+        <p><%=data.desc %></p>
+        <form action="/eventshub/event/<%=data.admin_url%>/edit-event-description" method="POST">
+          <textarea id="newEventDescription" type="text" name="newEventDescription" placeholder="Update event description..." style="width: 200px"></textarea>
+          <input type="submit" value="Update">
+        </form>
+
+        <p><a href="http://localhost:8080/eventshub/event/<%=data.url%>/participant" target="_blank">Here is the your invitation page.</a></p>
+
       </section>
+
     </div>
+
     <div class="event-participants">
-      <h2>Attendees</h2>
+
+      <h1>Attending</h1>
+
       <% for (let i in participants) { %>
       <table>
         <tr><%=participants[i].first_name%> </tr>
@@ -37,7 +52,9 @@
         <tr><%=participants[i].event_confirmation%> </tr>
       </table>
       <% }; %>
+
     </div>
+
   </body>
 
 </html>

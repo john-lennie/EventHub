@@ -23,26 +23,13 @@ $highlight-colour: #ff5e00;
 // UNIVERSAL STYLES
 
 body {
-  background-color: #EEE;
+  background-color: #fff;
   color: #000;
   font-size: 14px;
-
-  h1 {
-    font-size: 5vw;
-    color: #fff;
-    margin: 0 0 40px;
-  }
-
-  h2 {
-    font-weight: 400;
-    margin: 0;
-    font-size: 2.5vw;
-  }
-
 }
 
-button:focus {
-  outline: none;
+h1, h2 {
+  font-weight: 400;
 }
 
 .button {
@@ -54,6 +41,10 @@ button:focus {
   color: #fff;
   margin: 50px 0 0;
   cursor: pointer;
+}
+
+button:focus {
+  outline: none;
 }
 
 // SPECIFIC STYLES
@@ -87,6 +78,7 @@ button:focus {
 }
 
 .home-main {
+
   position: absolute;
   z-index: -1;
   top: 50%;
@@ -94,6 +86,10 @@ button:focus {
   transform: translate(0, -50%);
   width: 100vw;
   text-align: center;
+
+  h1 {
+    color: #fff;
+  }
 
   h2 {
     color: #fff;
@@ -177,7 +173,7 @@ button:focus {
     cursor: pointer;
     background: none;
     border: none;
-    font-size: 5vw;
+    font-size: 40px;;
     margin: 50px 25px;
   }
 
@@ -189,13 +185,15 @@ button:focus {
 
 .event-info  {
   max-width: 600px;
-  margin: 128px auto 0;
+  width: 85%;
+  margin: 160px auto 0;
 }
 
 .event-participants  {
   display: none;
   max-width: 600px;
-  margin: 128px auto 0;
+  width: 85%;
+  margin: 160px auto 0;
 }
 
 
@@ -260,6 +258,3 @@ button:focus {
   }
 
 }
-
-
-

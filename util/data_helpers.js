@@ -5,7 +5,9 @@
 // const DataHelpers = require("./util/data-helpers.js");
 
 module.exports = function makeDataHelpers(knex) {
+
   return {
+
     //generate random string for user id and short url
     generateURL: function() {
       return Math.random().toString(36).substr(2, 16);
@@ -59,7 +61,6 @@ module.exports = function makeDataHelpers(knex) {
       .select('events.id','event_name', 'event_date', 'url', 'desc', 'users.first_name', 'users.last_name', 'desc', 'admin_url')
     },
 
-    //DB Inserts
     //////DB Inserts///////
 
     // Insert new user in users table then assign that user as admin a new event in events table
@@ -89,6 +90,27 @@ module.exports = function makeDataHelpers(knex) {
         return knex('participants')
         .insert({event_confirmation: attending, user_id: user_id[0], event_id: eventID})
       })
+    },
+
+    //////DB Updates///////
+
+    updateEventName: function(eventName, url) {
+      return knex('events')
+      .where('admin_url', url)
+      .update({
+        event_name: eventName,
+        thisKeyIsSkipped: undefined
+      })
+    },
+
+    updateEventDescription: function(description, url) {
+      return knex('events')
+      .where('admin_url', url)
+      .update({
+        desc: description,
+        thisKeyIsSkipped: undefined
+      })
     }
+
   }
 }

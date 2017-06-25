@@ -21,6 +21,24 @@ module.exports = (dataHelpers) => {
     });
   });
 
+  router.post("/:id/edit-event-name", (req,res) => {
+    let eventName = req.body.newEventName;
+    let url = req.params.id;
+
+    dataHelpers.updateEventName(eventName, url).then(function (query_response) {
+    });
+    res.redirect("/eventshub/event/" + url);
+  });
+
+  router.post("/:id/edit-event-description", (req,res) => {
+    let eventDescription = req.body.newEventDescription;
+    let url = req.params.id;
+
+    dataHelpers.updateEventDescription(eventDescription, url).then(function (query_response) {
+    });
+    res.redirect("/eventshub/event/" + url);
+  });
+
   router.get("/:id/participant", (req,res) => {
     let URL = req.params.id;
     dataHelpers.publicGetSummary(URL)
@@ -61,35 +79,6 @@ module.exports = (dataHelpers) => {
         });
     });
 
-
-    // console.log("HELLO WORLD");
-    // console.log("==>" + req.params.id);
-    // dataHelpers.publicGetSummary(req.params.id)
-    // .then(function (query_response) {
-    //   console.log(query_response);
-    //   let first_name = req.body.f_name;
-    //   let last_name = req.body.l_name;
-    //   let email = req.body.email;
-    //   let attending = true;
-    //   let event_id = query_response[0].id;
-    //   //console.log(first_name);
-    //   dataHelpers.insertParticipant(req.body.first_name, req.body.last_name, req.body.email, attending, req.body.event_id);
-    // });
-    // console.log(req.body);
-  //   // res.send(200);
-  // });
-
-  // router.post("/:id", (req, res) => {
-  //   let selected_id = req.url.substring(1, req.url.length);
-  //   console.log("==========>" + selected_id);
-
-  //   console.log("I GOT THE AJAX CALL NOW " + selected_id);
-  //   let DUMMY_DATA = dataHelpers.getSummary(selected_id).then(function (query_response) {
-  //     console.log(query_response);
-  //     res.json(query_response);
-  //   });
-  // });
-
-
   return router;
+
 }
