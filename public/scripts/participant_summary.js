@@ -1,17 +1,17 @@
 $(document).ready(() => {
-  // When user clicks on register button, they fetch create-event form.
+  // When user clicks on register button, they're added to event.
   $("#register_btn").on("click",  () => {
     $("#edit_status_form").hide();
     $("#register_form").show();
   });
 
-  // When user clicks on create event button, they fetch create-event form.
+  // When user clicks on edit status button, they change their confirmation status to false.
   $("#edit_status_btn").on("click", () => {
     $("#register_form").hide();
     $("#edit_status_form").show();
   });
 
-  // When user clicks on create event button, ajax POST request is sent to the server.
+  // When user submits register form an ajax POST request is sent to the server, then reloads .
   $("#register_form").on("submit",( (event) => {
     event.preventDefault();
     console.log("register button")
@@ -25,7 +25,7 @@ $(document).ready(() => {
       })
     }));
 
-  // When user clicks on create event button, ajax POST request is sent to the server.
+  // When user edit status button, ajax POST request is sent to the server, and reloads.
  $("#edit_status_form").on("submit",( (event) => {
     event.preventDefault();
       $.ajax({
@@ -37,5 +37,4 @@ $(document).ready(() => {
         }
       })
     }));
-
 });

@@ -68,17 +68,15 @@ module.exports = (dataHelpers) => {
 
   router.post("/:id/participant/update", (req,res) => {
     let URL = req.params.id;
-    dataHelpers.publicGetSummary(URL)
-      .then((eventInfo) => {
-        let data = eventInfo[0];
-        let attending = false;
-        dataHelpers.updateParticipantStatus(req.body.first_name, req.body.last_name, req.body.email, attending, eventInfo[0].id)
-     })
+    let attending = false;
+    let email = req.body.email;
+    dataHelpers.getEventId(URL)
+    .then((eventInfo) => {
+      dataHelpers.updateParticipantStatus(attending, email, eventInfo[0].id)
       .then(() => {
         res.status(200).send("/eventshub/event/" + URL + "/participant");
-        });
-    });
-
+      });
+    })
+  });
   return router;
-
 }

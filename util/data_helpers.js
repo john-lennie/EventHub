@@ -110,7 +110,26 @@ module.exports = function makeDataHelpers(knex) {
         desc: description,
         thisKeyIsSkipped: undefined
       })
-    }
+    },
 
+    getEventId: function(url) {
+      return knex('events')
+      .where('events.url', url)
+      .select('id')
+
+    },
+
+    updateParticipantStatus: function(notAttending, email, eventID) {
+      return knex
+              .from("users")
+              .returning("id")
+              .where("email", email)
+              .then((userInfo) => {
+                return knex('participants')
+                  .update('event_confirmation', notAttending)
+                  .where('user_id', userInfo[0].id)
+                  .andWhere('event_id', eventID);
+              })
+    }
   }
 }
