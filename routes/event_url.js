@@ -61,8 +61,6 @@ module.exports = (dataHelpers) => {
         let attending = true;
         dataHelpers.getparticipantsForEvent(eventInfo[0].id)
         .then((arrray_of_participants) => {
-          console.log("ARRAY OF PARTICIPANTS");
-          console.log(arrray_of_participants);
           let found_existing_email = false;
           for (let i in arrray_of_participants)
           {
@@ -83,6 +81,7 @@ module.exports = (dataHelpers) => {
 
     let URL = req.params.id;
     let attending;
+
     if (req.body.status === "yes") {
       attending = true;
     } else if (req.body.status === "no") {
@@ -90,12 +89,28 @@ module.exports = (dataHelpers) => {
     }
 
     dataHelpers.getEventId(URL)
-    .then((eventInfo) => {
-      dataHelpers.updateParticipantStatus(attending, req.body.email, eventInfo[0].id)
-      .then(() => {
-        res.status(200).send("/eventshub/event/" + URL + "/participant");
+      .then((eventInfo) => {
+        dataHelpers.getparticipantsForEvent(eventInfo[0].id)
+          .then((arrray_of_participants) => {
+            let found_existing_email = false;
+            for (let i in arrray_of_participants) {
+              if (arrray_of_participants[i].email == req.body.email ) {
+                found_existing_email = true;
+              }
+            }
+            if (found_existing_email){
+                dataHelpers.updateParticipantStatus(attending, req.body.email, eventInfo[0].id)
+                .then(() => {
+                  res.status(200).send("/eventshub/event/" + URL + "/participant");
+               });
+            }
+            else if (!found_existing_email) {
+              res.status(200).send("/eventshub/event/" + URL + "/participant");
+            }
       });
-    })
+    });
   });
+
+
   return router;
 }
