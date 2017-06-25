@@ -4,6 +4,18 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (dataHelpers) => {
+
+  router.post("/:id", (req, res) => {
+    let selected_id = req.url.substring(1, req.url.length);
+    console.log("==========>" + selected_id);
+
+    console.log("I GOT THE AJAX CALL NOW " + selected_id);
+    let DUMMY_DATA = dataHelpers.getSummary(selected_id).then(function (query_response) {
+      console.log(query_response);
+      res.json(query_response);
+    });
+  });
+
   router.get("/:id", (req,res) => {
     let data;
     let event_id;
@@ -17,6 +29,24 @@ module.exports = (dataHelpers) => {
     });
   });
 
+  router.post("/:id/edit-event-name", (req,res) => {
+    let eventName = req.body.newEventName;
+    let url = req.params.id;
+
+    dataHelpers.updateEventName(eventName, url).then(function (query_response) {
+    });
+    res.redirect("/eventshub/event/" + url);
+  });
+
+  router.post("/:id/edit-event-description", (req,res) => {
+    let eventDescription = req.body.newEventDescription;
+    let url = req.params.id;
+
+    dataHelpers.updateEventDescription(eventDescription, url).then(function (query_response) {
+    });
+    res.redirect("/eventshub/event/" + url);
+  });
+
   router.get("/:id/participant", (req,res) => {
     console.log("HELLO WORLD");
     console.log("==>" + req.params.id);
@@ -24,12 +54,10 @@ module.exports = (dataHelpers) => {
       console.log(query_response);
       let data = query_response[0];
       res.render("participant_summary", {data});
-
-
     });
   });
 
-//STATIC PARTICIPANT POST
+  //STATIC PARTICIPANT POST
   router.post("/:id/participant", (req,res) => {
     console.log("HELLO WORLD");
     console.log("==>" + req.params.id);
@@ -47,17 +75,6 @@ module.exports = (dataHelpers) => {
     res.send(200);
   });
 
-  router.post("/:id", (req, res) => {
-    let selected_id = req.url.substring(1, req.url.length);
-    console.log("==========>" + selected_id);
-
-    console.log("I GOT THE AJAX CALL NOW " + selected_id);
-    let DUMMY_DATA = dataHelpers.getSummary(selected_id).then(function (query_response) {
-      console.log(query_response);
-      res.json(query_response);
-    });
-  });
-
-
   return router;
+
 }
