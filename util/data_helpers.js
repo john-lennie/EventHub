@@ -50,7 +50,7 @@ module.exports = function makeDataHelpers(knex) {
       return knex('events')
       .where('admin_url', url)
       .join('users', 'events.admin_id', '=', 'users.id')
-      .select('events.id','event_name', 'event_date', 'url', 'desc', 'users.first_name', 'users.last_name', 'desc', 'admin_url')
+      .select('events.id','event_name', 'event_date', 'url', 'desc', 'users.first_name', 'users.last_name', 'desc', 'admin_url', 'time')
     },
 
     //get data for the public URL only
