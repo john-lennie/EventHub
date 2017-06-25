@@ -14,8 +14,8 @@ $(document).ready(() => {
   // When user submits register form an ajax POST request is sent to the server, then reloads .
   $("#register_form").on("submit",( (event) => {
     event.preventDefault();
-    console.log("register button")
-      $.ajax({
+   if($("#register_form").children(".email_input").val().length > 1) {
+    $.ajax({
         data: $("#register_form").serialize(),
         url: $("#register_form").attr('action'),
         type: $("#register_form").attr('method'),
@@ -23,11 +23,14 @@ $(document).ready(() => {
           window.location = res;
         }
       })
-    }));
+   }
+  }));
 
   // When user edit status button, ajax POST request is sent to the server, and reloads.
  $("#edit_status_form").on("submit",( (event) => {
     event.preventDefault();
+
+    if($("#edit_status_form").children(".email_input").val().length > 1){
       $.ajax({
         data: $("#edit_status_form").serialize(),
         url: $("#edit_status_form").attr('action'),
@@ -36,5 +39,8 @@ $(document).ready(() => {
           window.location = res;
         }
       })
-    }));
+    }
+  }));
+
+
 });
