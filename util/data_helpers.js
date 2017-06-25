@@ -119,14 +119,16 @@ module.exports = function makeDataHelpers(knex) {
 
     },
 
-    updateParticipantStatus: function(notAttending, email, eventID) {
+    updateParticipantStatus: function(attending, email, eventID) {
       return knex
               .from("users")
               .returning("id")
               .where("email", email)
               .then((userInfo) => {
+                // console.log(userInfo[0].id);
+                // console.log(eventID);
                 return knex('participants')
-                  .update('event_confirmation', notAttending)
+                  .update('event_confirmation', attending)
                   .where('user_id', userInfo[0].id)
                   .andWhere('event_id', eventID);
               })

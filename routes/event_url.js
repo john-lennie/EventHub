@@ -67,12 +67,18 @@ module.exports = (dataHelpers) => {
     });
 
   router.post("/:id/participant/update", (req,res) => {
+
     let URL = req.params.id;
-    let attending = false;
-    let email = req.body.email;
+    let attending;
+    if (req.body.status === "yes") {
+      attending = true;
+    } else if (req.body.status === "no") {
+     attending = false;
+    }
+
     dataHelpers.getEventId(URL)
     .then((eventInfo) => {
-      dataHelpers.updateParticipantStatus(attending, email, eventInfo[0].id)
+      dataHelpers.updateParticipantStatus(attending, req.body.email, eventInfo[0].id)
       .then(() => {
         res.status(200).send("/eventshub/event/" + URL + "/participant");
       });

@@ -28,16 +28,53 @@
       </form>
 
       <form action="/eventshub/event/<%= data.url%>/participant/update" id="edit_status_form" style = "display:none;" method="POST">
-      <label for="firstName">First Name</label>
-        <input type="text" name="f_name">
-        <label for="LastName">Last Name</label>
-        <input type="text" name="l_name">
-        <label for="firsName">Email Name</label>
+        <label for="Attending"> Attending </label>
+        <input type="radio" name="status" value="yes">
+        <label for="Not_Attending"> Not Attending </label>
+        <input type="radio" name="status" value="no">
+        <label for="firsName">Email</label>
         <input type="email" name="email">
         <input type="submit" value="Update">
       </form>
     </section> <br>
 
+    <div class="event-navigation">
+      <button class="info active">Info</button>
+      <button class="attending">Attending</button>
+    </div>
+
+    <div class="event-info">
+
+      <section id ="summary">
+
+        <h1>Your Event:</h1>
+
+        <h2><%= data.event_name %></h2>
+
+        <p><%=data.desc %></p>
+
+        <p><%= data.event_date %></p>
+
+        <p><%= data.time %></p>
+
+        <p><a href="http://localhost:8080/eventshub/event/<%=data.url%>/participant" target="_blank">Here is the your invitation page.</a></p>
+
+      </section>
+
+    </div>
+
+    <div class="event-participants">
+
+      <h1>Attending</h1>
+
+      <% for (let i in participants) { %>
+      <table>
+        <tr><%=participants[i].first_name%> </tr>
+        <tr><%=participants[i].last_name%> </tr>
+        <tr><%=participants[i].event_confirmation%> </tr>
+      </table>
+      <% }; %>
+    </div>
 
   </body>
 </html>
