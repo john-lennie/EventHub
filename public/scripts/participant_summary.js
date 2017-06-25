@@ -14,6 +14,7 @@ $(document).ready(() => {
   // When user submits register form an ajax POST request is sent to the server, then reloads .
   $("#register_form").on("submit",( (event) => {
     event.preventDefault();
+
    if($("#register_form").children(".email_input").val().length > 1) {
     $.ajax({
         data: $("#register_form").serialize(),
