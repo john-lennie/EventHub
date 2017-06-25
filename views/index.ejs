@@ -35,7 +35,6 @@
       <h1>Event Page</h1>
       <form action="/eventshub/event/" method="POST" id="event_create_form">
         <label for="firstName">First Name</label>
-
         <input id="first_name" type="text" name="firstname" placeholder="First Name">
 
         <label for="lastName">Last Name</label>
@@ -55,7 +54,7 @@
 
         <label for="Description">Description</label>
         <textarea id="description" type="text" name="description" placeholder="Description"></textarea>
-
+        <p id="error"></p>
         <button id="create_event_btn" type="submit">Create Event</button>
       </form>
     </section>
