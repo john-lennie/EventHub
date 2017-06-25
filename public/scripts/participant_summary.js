@@ -2,13 +2,13 @@ $(document).ready(() => {
   // When user clicks on register button, they're added to event.
   $("#register_btn").on("click",  () => {
     $("#edit_status_form").hide();
-    $("#register_form").show();
+    $("#register_form").toggle();
   });
 
   // When user clicks on edit status button, they change their confirmation status to false.
   $("#edit_status_btn").on("click", () => {
     $("#register_form").hide();
-    $("#edit_status_form").show();
+    $("#edit_status_form").toggle();
   });
 
   // When user submits register form an ajax POST request is sent to the server, then reloads .

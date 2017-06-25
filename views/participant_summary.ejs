@@ -12,61 +12,51 @@
   </head>
 
   <body>
-    <section id ="participant_status">
-      <h2>Choose Your Status:</h2>
-      <button id="register_btn" type="button">Register</button>
-      <button id="edit_status_btn" type="button">Edit Status</button> <br>
-
-      <form action="/eventshub/event/<%= data.url%>/participant/register" id="register_form" style = "display:none;" method="POST">
-      <label for="firstName">First Name</label>
-        <input type="text" name="first_name">
-        <label for="lastName">Last Name</label>
-        <input type="text" name="last_name">
-        <label for="emailName">Email Name</label>
-        <input class = "email_input" type="email" name="email">
-        <input type="submit" value="I'm going">
-      </form>
-
-      <form action="/eventshub/event/<%= data.url%>/participant/update" id="edit_status_form" style = "display:none;" method="POST">
-        <label for="Attending"> Attending </label>
-        <input type="radio" name="status" value="yes">
-        <label for="Not_Attending"> Not Attending </label>
-        <input type="radio" name="status" value="no">
-        <label for="firsName">Email</label>
-        <input class = "email_input"  type="email" name="email">
-        <input type="submit" value="Update">
-      </form>
-    </section> <br>
 
     <div class="event-navigation">
-      <button class="info active">Info</button>
-      <button class="attending">Attending</button>
+      <button class="info active">Infomation</button>
+      <button class="attending">Participants</button>
     </div>
 
     <div class="event-info">
-
       <section id ="summary">
-
-        <h1>Your Event:</h1>
-
+        <h1>Event Information:</h1>
         <h2><%= data.event_name %></h2>
-
-        <p><%=data.desc %></p>
-
+        <hr />
+        <h3><%=data.desc %></h3>
+        <hr />
         <p><%= data.event_date %></p>
-
+        <hr />
         <p><%= data.time %></p>
-
-        <p><a href="http://localhost:8080/eventshub/event/<%=data.url%>/participant" target="_blank">Here is the your invitation page.</a></p>
-
       </section>
-
+      <section id ="participant_status">
+        <div class="participant-form-buttons">
+          <button id="register_btn" type="button">Register</button>
+          <button id="edit_status_btn" type="button">Edit Status</button>
+        </div>
+        <form action="/eventshub/event/<%= data.url%>/participant/register" id="register_form" style = "display:none;" method="POST">
+          <label for="firstName">First Name</label>
+          <input type="text" name="first_name">
+          <label for="lastName">Last Name</label>
+          <input type="text" name="last_name">
+          <label for="emailName">Email Name</label>
+          <input class = "email_input" type="email" name="email">
+          <input type="submit" value="I'm going">
+        </form>
+        <form action="/eventshub/event/<%= data.url%>/participant/update" id="edit_status_form" style = "display:none;" method="POST">
+          <label for="Attending"> Attending </label>
+          <input type="radio" name="status" value="yes">
+          <label for="Not_Attending"> Not Attending </label>
+          <input type="radio" name="status" value="no">
+          <label for="firsName">Email</label>
+          <input class = "email_input"  type="email" name="email">
+          <input type="submit" value="Update">
+        </form>
+      </section>
     </div>
 
     <div class="event-participants">
-
-      <h1>Attending</h1>
-
+      <h1>Event Participants:</h1>
       <% for (let i in participants) { %>
       <table>
         <tr><%=participants[i].first_name%> </tr>

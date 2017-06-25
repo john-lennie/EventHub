@@ -13,60 +13,41 @@
   <body>
 
     <div class="event-navigation">
-      <button class="info active">Info</button>
-      <button class="attending">Attending</button>
+      <button class="info active">Information</button>
+      <button class="attending">Participants</button>
     </div>
 
     <div class="event-info">
-
       <section id ="summary">
-
-        <h1>Your Event:</h1>
-
+        <h1>Event Information:</h1>
         <h2><%= data.event_name %></h2>
         <button class="edit-event-name-btn">Edit</button>
         <form class="edit-event-name-form" action="/eventshub/event/<%=data.admin_url%>/edit-event-name" method="POST">
           <input id="newEventName" type="text" name="newEventName" placeholder="Update event name...">
           <input type="submit" value="Update">
         </form>
-
         <hr />
-
         <h3><%=data.desc %></h3>
         <button class="edit-event-desc-btn">Edit</button>
         <form class="edit-event-desc-form" action="/eventshub/event/<%=data.admin_url%>/edit-event-description" method="POST">
           <textarea id="newEventDescription" type="text" name="newEventDescription" placeholder="Update event description..."></textarea>
           <input type="submit" value="Update">
         </form>
-
         <hr />
-
         <p><%= data.event_date %></p>
-
         <hr />
-
         <p><%= data.time %></p>
-
         <hr />
-
         <p>Here is your admin url to edit and review your event:</p>
-
         <p><a href="http://localhost:8080/eventshub/event/<%=data.admin_url%>">http://localhost:8080/eventshub/event/<%=data.admin_url%></a></p>
-
         <hr />
-
-        <p>Here is your url to send to people you'd like to invite to the event:</p>
-
+        <p>Here is the url to send to people you'd like to invite to the event:</p>
         <p><a href="http://localhost:8080/eventshub/event/<%=data.url%>/participant" target="_blank">http://localhost:8080/eventshub/event/<%=data.url%>/participant</a></p>
-
       </section>
-
     </div>
 
     <div class="event-participants">
-
-      <h1>Attending</h1>
-
+      <h1>Event Participants:</h1>
       <% for (let i in participants) { %>
       <table>
         <tr><%=participants[i].first_name%> </tr>
@@ -74,7 +55,6 @@
         <tr><%=participants[i].event_confirmation%> </tr>
       </table>
       <% }; %>
-
     </div>
 
   </body>
