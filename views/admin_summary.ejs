@@ -24,22 +24,40 @@
         <h1>Your Event:</h1>
 
         <h2><%= data.event_name %></h2>
-        <form action="/eventshub/event/<%=data.admin_url%>/edit-event-name" method="POST">
-          <input id="newEventName" type="text" name="newEventName" placeholder="Update event name..." style="width: 200px">
+        <button class="edit-event-name-btn">Edit</button>
+        <form class="edit-event-name-form" action="/eventshub/event/<%=data.admin_url%>/edit-event-name" method="POST">
+          <input id="newEventName" type="text" name="newEventName" placeholder="Update event name...">
           <input type="submit" value="Update">
         </form>
 
-        <p><%=data.desc %></p>
-        <form action="/eventshub/event/<%=data.admin_url%>/edit-event-description" method="POST">
-          <textarea id="newEventDescription" type="text" name="newEventDescription" placeholder="Update event description..." style="width: 200px"></textarea>
+        <hr />
+
+        <h3><%=data.desc %></h3>
+        <button class="edit-event-desc-btn">Edit</button>
+        <form class="edit-event-desc-form" action="/eventshub/event/<%=data.admin_url%>/edit-event-description" method="POST">
+          <textarea id="newEventDescription" type="text" name="newEventDescription" placeholder="Update event description..."></textarea>
           <input type="submit" value="Update">
         </form>
+
+        <hr />
 
         <p><%= data.event_date %></p>
 
+        <hr />
+
         <p><%= data.time %></p>
 
-        <p><a href="http://localhost:8080/eventshub/event/<%=data.url%>/participant" target="_blank">Here is the your invitation page.</a></p>
+        <hr />
+
+        <p>Here is your admin url to edit and review your event:</p>
+
+        <p><a href="http://localhost:8080/eventshub/event/<%=data.admin_url%>">http://localhost:8080/eventshub/event/<%=data.admin_url%></a></p>
+
+        <hr />
+
+        <p>Here is your url to send to people you'd like to invite to the event:</p>
+
+        <p><a href="http://localhost:8080/eventshub/event/<%=data.url%>/participant" target="_blank">http://localhost:8080/eventshub/event/<%=data.url%>/participant</a></p>
 
       </section>
 

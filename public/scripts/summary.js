@@ -13,4 +13,13 @@ $(document).ready(() => {
     $(".event-navigation .info").addClass("active");
     $(".event-navigation .attending").removeClass("active");
   });
+
+  $(".edit-event-name-btn").on("click", function() {
+    $(".edit-event-name-form").toggle();
+  });
+
+  $(".edit-event-desc-btn").on("click", function() {
+    $(".edit-event-desc-form").toggle();
+  });
+
 });
