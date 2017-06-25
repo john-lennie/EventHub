@@ -130,6 +130,14 @@ module.exports = function makeDataHelpers(knex) {
                   .where('user_id', userInfo[0].id)
                   .andWhere('event_id', eventID);
               })
+    },
+
+    getparticipantsForEvent: function(event_id) {
+      return knex
+      .from("participants")
+      .select("participants.user_id", "users.email")
+      .join('users', 'participants.user_id', '=', 'users.id')
+      .where("participants.event_id", event_id)
     }
   }
 }

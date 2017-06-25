@@ -54,12 +54,25 @@ module.exports = (dataHelpers) => {
 //STATIC PARTICIPANT POST
   router.post("/:id/participant/register", (req,res) => {
     let URL = req.params.id;
-    console.log("This Other URL", URL);
+    //console.log("This Other URL", URL);
     dataHelpers.publicGetSummary(URL)
       .then((eventInfo) => {
         let data = eventInfo[0];
         let attending = true;
-        dataHelpers.insertParticipant(req.body.first_name, req.body.last_name, req.body.email, attending, eventInfo[0].id)
+        dataHelpers.getparticipantsForEvent(eventInfo[0].id)
+        .then((arrray_of_participants) => {
+          console.log("ARRAY OF PARTICIPANTS");
+          console.log(arrray_of_participants);
+          let found_existing_email = false;
+          for (let i in arrray_of_participants)
+          {
+            if (arrray_of_participants[i].email == req.body.email)
+              found_existing_email = true;
+          }
+
+          if (!found_existing_email)
+            dataHelpers.insertParticipant(req.body.first_name, req.body.last_name, req.body.email, attending, eventInfo[0].id)
+        });
      })
       .then(() => {
         res.status(200).send("/eventshub/event/" + URL + "/participant");
