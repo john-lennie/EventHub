@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>EventsHub</title>
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+  </head>
+
+  <body>
+    <div class="home-video-wrapper">
+      <video class="home-video" autoplay="" loop="" muted="">
+        <source src="https://d3hjue7omxs01q.cloudfront.net/Video/homepage/background-header-v1.mp4" type="video/mp4">
+        <source src="https://d3hjue7omxs01q.cloudfront.net/Video/homepage/background-header-v1.webm" type="video/webm">
+      </video>
+    </div>
+    <section class="summary-form">
+      <h1>Event Summary</h1>
+      <form action="/eventshub/event/" method="POST" id="event_create_form">
+        <h5 id="title"> Event Name: <%= data.event_name %></h5>
+        <h5 id="h_name">Full Name: <%= data.first_name %> <%= data.last_name %></h5>
+        <h5 id="desc">Description: <%=data.desc %></h5>
+        <h5 id="url1">Share URL: <%=data.url%></h5>
+        <h5 id="url2">Admin URL: <%=data.admin_url%></h5>
+        <h1>Participants</h1>
+        <% for (let i in participants) { %>
+        <table>
+          <tr><%=participants[i].first_name%> </tr>
+          <tr><%=participants[i].last_name%> </tr>
+          <tr><%=participants[i].event_confirmation%> </tr>
+        </table>
+        <% }; %>
+      </form>
+    </section>
+  </body>
+</html>
