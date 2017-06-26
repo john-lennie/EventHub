@@ -113,14 +113,17 @@ input:focus, textarea:focus {
   text-align: center;
 
   h1 {
+    font-size: 6vw;
     color: #fff;
   }
 
   h2 {
+    font-size: 3vw;
     color: #fff;
   }
 
   a {
+    font-size: 1.75vw;
     @extend .button;
     margin: 15px 0 0;
   }
