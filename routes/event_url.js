@@ -13,6 +13,7 @@ module.exports = (dataHelpers) => {
     dataHelpers.getSummary(selected_id)
       .then(function (query_response) {
       data = query_response[0];
+      data.event_date = data.event_date.toString().substring(0,10);
       event_id = query_response[0].id;
       dataHelpers.getEventParticipants(event_id)
       .then(function(participants) {
@@ -44,6 +45,7 @@ module.exports = (dataHelpers) => {
     dataHelpers.publicGetSummary(URL)
       .then(function (eventInfo){
         let data = eventInfo[0];
+        data.event_date = data.event_date.toString().substring(0,10);
         dataHelpers.getEventParticipants(eventInfo[0].id)
         .then( (participants) => {
         res.render("participant_summary", {data, participants});
