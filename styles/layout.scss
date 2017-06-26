@@ -22,8 +22,17 @@ $highlight-colour: #ff5e00;
 
 // UNIVERSAL STYLES
 
+html {
+  min-height: 100%;
+}
+
 body {
-  background-color: #fff;
+  background: #323651;
+  background: -moz-linear-gradient(45deg, #323651 0%, #243850 100%);
+  background: -webkit-linear-gradient(45deg, #323651 0%, #243850 100%);
+  background: linear-gradient(45deg, #323651 0%, #243850 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#323651', endColorstr='#243850',GradientType=1 );
+  min-height: 100%;
   color: #000;
   font-size: 14px;
 }
@@ -113,7 +122,7 @@ input:focus, textarea:focus {
 
   a {
     @extend .button;
-    margin: 50px 0 0;
+    margin: 15px 0 0;
   }
 
 }
@@ -219,7 +228,7 @@ input:focus, textarea:focus {
   padding: 30px;
   max-width: 600px;
   width: 85%;
-  margin: 130px auto 60px;
+  margin: 130px auto 90px;
 }
 
 .event-participants  {
@@ -230,7 +239,7 @@ input:focus, textarea:focus {
   padding: 30px;
   max-width: 600px;
   width: 85%;
-  margin: 130px auto 60px;
+  margin: 130px auto 90px;
 }
 
 .summary-form {
@@ -349,7 +358,7 @@ section#summary, .event-participants {
 }
 
 .participant-form-buttons {
-  text-align: center;
+  margin-bottom: 15px;
 }
 
 #participant_status {
