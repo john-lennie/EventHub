@@ -21,14 +21,14 @@
       <section id ="summary">
         <h1>Event Information:</h1>
         <h2><%= data.event_name %></h2>
-        <button class="edit-event-name-btn">Edit</button>
+        <button class="edit-event-name-btn">edit</button>
         <form class="edit-event-name-form" action="/eventshub/event/<%=data.admin_url%>/edit-event-name" method="POST">
           <input id="newEventName" type="text" name="newEventName" placeholder="Update event name...">
           <input type="submit" value="Update">
         </form>
         <hr />
         <h3><%=data.desc %></h3>
-        <button class="edit-event-desc-btn">Edit</button>
+        <button class="edit-event-desc-btn">edit</button>
         <form class="edit-event-desc-form" action="/eventshub/event/<%=data.admin_url%>/edit-event-description" method="POST">
           <textarea id="newEventDescription" type="text" name="newEventDescription" placeholder="Update event description..."></textarea>
           <input type="submit" value="Update">
