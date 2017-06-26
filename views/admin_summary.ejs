@@ -54,8 +54,10 @@
       <h2>Attending:</h2>
         <% for (let i in participants) { %>
           <% if (participants[i].event_confirmation == true) { %>
+            <p>
             <%=participants[i].first_name%>
             <%=participants[i].last_name%>
+            </p>
           <% }%>
         <% }%>
       </div>
@@ -64,8 +66,10 @@
       <h2>Not Attending:</h2>
         <% for (let i in participants) { %>
           <% if (!participants[i].event_confirmation) { %>
+            <p>
             <%=participants[i].first_name%>
             <%=participants[i].last_name%>
+            </p>
           <% }%>
         <% }%>
       </div>
