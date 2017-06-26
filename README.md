@@ -41,3 +41,19 @@ just delete them all (no more free for alls).
 - System checks if the email exists in the system, if it does it changes the status for that email.
 
 ## Screenshots
+
+-![1](https://github.com/waff1e/mid_term/blob/master/docs/1-home-page.png?raw=true)
+-![2](https://github.com/waff1e/mid_term/blob/master/docs/2-create-event.png?raw=true)
+-![3](https://github.com/waff1e/mid_term/blob/master/docs/3-create-event-error.png?raw=true)
+-![4](https://github.com/waff1e/mid_term/blob/master/docs/4-create-event-calendar.png?raw=true)
+-![5](https://github.com/waff1e/mid_term/blob/master/docs/5-create-event-time-picker.png?raw=true)
+-![6](https://github.com/waff1e/mid_term/blob/master/docs/6-create-event-before-submit.png?raw=true)
+-![7](https://github.com/waff1e/mid_term/blob/master/docs/7-summary-page.png?raw=true)
+-![8](https://github.com/waff1e/mid_term/blob/master/docs/8-summary-page-edit.png?raw=true)
+-![9](https://github.com/waff1e/mid_term/blob/master/docs/9-summary-chenged-event-name.png?raw=true)
+-![10](https://github.com/waff1e/mid_term/blob/master/docs/10-show-edit-desc.png?raw=true)
+-![11](https://github.com/waff1e/mid_term/blob/master/docs/11-participant-invite-page.png?raw=true)
+-![12](https://github.com/waff1e/mid_term/blob/master/docs/12-show-register-form.png?raw=true)
+-![13](https://github.com/waff1e/mid_term/blob/master/docs/13-show-edit-status-form.png?raw=true)
+-![14](https://github.com/waff1e/mid_term/blob/master/docs/14-show-all-participants.png?raw=true)
+-![15](https://github.com/waff1e/mid_term/blob/master/docs/15-register-participant.png?raw=true)
